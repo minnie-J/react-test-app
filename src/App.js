@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
+
+import Main from "./test-folder/main";
+import Home from "./test-folder/home";
+import Login from "./test-folder/login";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <BrowserRouter>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          // render={() => {
+          //   console.log("aaaaaaaaaaaaaaaaaaaaaaaaa");
+          //   window.location = "/home";
+          // }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <HashRouter>
+            <Switch>
+              <Route exact path="/" render={() => <Home />} />
+              <Route exact path="/login" component={Login} />
+            </Switch>
+          </HashRouter>
+        </Route>
+        <Route
+          exact
+          path="/main/:id"
+          render={({ match }) => {
+            console.log("match: ", match.params.id);
+            return <Main />;
+          }}
+        />
+        <Route path="/*" render={() => <div>Error</div>} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
