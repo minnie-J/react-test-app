@@ -155,6 +155,8 @@ const Table = ({
     [isAllRowsChecked, rowList]
   );
 
+  //TODO: sort - ordering 처리 하는거
+
   return (
     <Container>
       {columnData ? (
