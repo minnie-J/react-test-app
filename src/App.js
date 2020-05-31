@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
+import GlobalStyle from "./global-style";
 
 import Main from "./test-folder/main";
 import Home from "./test-folder/home";
@@ -8,6 +9,7 @@ import Login from "./test-folder/login";
 function App() {
   return (
     <BrowserRouter>
+      <GlobalStyle />
       <Switch>
         <Route
           exact
