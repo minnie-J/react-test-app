@@ -4,7 +4,7 @@
   font-weight: 100;
   font-display: swap;
   src: local("Noto Sans KR Thin"), local("NotoSansKR-Thin"),
-    url("/fonts/NotoSansKR-Thin.otf") format("opentype");
+    url("./NotoSansKR-Thin.otf") format("opentype");
 }
 
 @font-face {
@@ -13,7 +13,7 @@
   font-weight: 300;
   font-display: block;
   src: local("Noto Sans KR Light"), local("NotoSansKR-Light"),
-    url("/fonts/NotoSansKR-Light.otf") format("opentype");
+    url("./NotoSansKR-Light.otf") format("opentype");
 }
 
 @font-face {
@@ -32,7 +32,7 @@
   font-weight: 500;
   font-display: block;
   src: local("Noto Sans KR Medium"), local("NotoSansKR-Medium"),
-    url("/fonts/NotoSansKR-Medium.otf") format("opentype");
+    url("./NotoSansKR-Medium.otf") format("opentype");
 }
 
 @font-face {
@@ -42,7 +42,7 @@
   font-weight: bold;
   font-display: block;
   src: local("Noto Sans KR Bold"), local("NotoSansKR-Bold"),
-    url("/fonts/NotoSansKR-Bold.otf") format("opentype");
+    url("./NotoSansKR-Bold.otf") format("opentype");
 }
 
 @font-face {
@@ -51,5 +51,5 @@
   font-weight: 900;
   font-display: block;
   src: local("Noto Sans KR Black"), local("NotoSansKR-Black"),
-    url("/fonts/NotoSansKR-Black.otf") format("opentype");
+    url("./NotoSansKR-Black.otf") format("opentype");
 }
