@@ -1,6 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+
+import "antd/dist/antd.css";
 import "./assets/fonts/font.css";
+import "./assets/css/checkbox.css";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
