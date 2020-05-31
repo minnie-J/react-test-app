@@ -1,5 +1,7 @@
 import React from "react";
 
+import Table from "../table/table";
+
 const sampleData = [
   {
     id: 1,
@@ -12,7 +14,8 @@ const sampleData = [
   {
     id: 2,
     catName: "sub_b",
-    name: "title 2",
+    name:
+      "title 2 - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     creUser: "mini",
     creDate: "2020-05-02 00:00:00",
     count: 0,
@@ -20,8 +23,7 @@ const sampleData = [
   {
     id: 3,
     catName: "sub_b",
-    name:
-      "title 1111111111111111111111111111111111111111111111111111111111111111111111111111",
+    name: "title 3",
     creUser: "mini",
     creDate: "2020-05-02 00:00:01",
     count: 0,
@@ -38,17 +40,69 @@ const sampleData = [
 
 const sampleColumns = [
   {
-    columnName: "No.",
+    columnName: "Index",
     propName: "id",
+    align: "center",
+    // width: "20%",
+    // order,
+    // render: (rowId, text) => <div onClick={event => onClickCell(rowId)} style={{...}}>{text}</div>
+  },
+  {
+    columnName: "제목",
+    propName: "name",
+    ellipsis: true,
+    // align: "center",
+    // width: "200px",
+    // order,
+    // render: (rowId, text) => <div onClick={event => onClickCell(rowId)} style={{...}}>{text}</div>
+  },
+  {
+    columnName: "작성자",
+    propName: "creUser",
+    // align: "center",
     // width,
-    // align,
+    // order,
+    render: (text) => <div style={{ color: "green" }}>{text}</div>,
+  },
+  {
+    columnName: "작성 시간",
+    propName: "creDate",
+    align: "center",
+    // width: "fit-content",
+    // order,
+    // render: (rowId, text) => <div onClick={event => onClickCell(rowId)} style={{...}}>{text}</div>
+  },
+  {
+    columnName: "조회수",
+    propName: "count",
+    align: "center",
+    // width,
     // order,
     // render: (rowId, text) => <div onClick={event => onClickCell(rowId)} style={{...}}>{text}</div>
   },
 ];
 
 const Home = () => {
-  return <div>Home</div>;
+  // return <div>Home</div>;
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        marginTop: "40px",
+      }}
+    >
+      <Table
+        columnData={sampleColumns}
+        rowData={sampleData}
+        // height="36px"
+        // border={false}
+        // header={false}
+        checkbox={true}
+        // fixedHeader
+      />
+    </div>
+  );
 };
 
 export default Home;
