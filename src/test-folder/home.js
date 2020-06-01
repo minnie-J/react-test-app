@@ -50,7 +50,7 @@ const sampleColumns = [
   {
     columnName: "제목",
     propName: "name",
-    ellipsis: true,
+    // ellipsis: true,
     // align: "center",
     // width: "200px",
     // order,
@@ -90,13 +90,14 @@ const Home = () => {
         display: "flex",
         justifyContent: "center",
         marginTop: "40px",
+        height: "200px",
       }}
     >
       <Table
         columnData={sampleColumns}
         rowData={sampleData}
         // height="36px"
-        // border={false}
+        border={true}
         // header={false}
         checkbox={true}
         // fixedHeader

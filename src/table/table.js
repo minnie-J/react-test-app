@@ -12,7 +12,7 @@ const TableArea = styled.table`
   /** border-collapse
     collapse: tr td border와 합쳐서 한줄로 표현
     saperate: (default) tr td가 독립적으로 border를 가짐 두줄로 나오고 막..
-   */
+  */
   border-collapse: collapse;
 
   width: 100%;
@@ -20,7 +20,7 @@ const TableArea = styled.table`
   /** table-layout
     auto: (default) cell 내용에 따라 너비를 자동으로 잡아줌
     fixed: 셀 내부 공백을 무시하고 너비를 잡음. 너비를 별도로 지정하지 않으면 각 셀 간격을 동일하게 만듦. 
-   */
+  */
   table-layout: auto;
   /* table-layout: fixed; */
 
@@ -40,8 +40,8 @@ const HeaderArea = styled.tr`
 
 const ColumnCell = styled.th`
   /** vertical-align
-  middle: 문자열 수직 방향 가운데 정렬
-*/
+    middle: 문자열 수직 방향 가운데 정렬
+  */
   vertical-align: middle;
   padding: 0 6px;
 
@@ -55,6 +55,53 @@ const ColumnCell = styled.th`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  /** 
+    Fixed Header - border true 일 때
+  */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1px;
+  background-color: #fff;
+  outline: 1px solid #e6e6e6;
+  outline-offset: 0;
+  z-index: 2;
+
+  /** 
+    Fixed Header - border false 일 때
+  */
+  /* position: -webkit-sticky;
+  position: sticky;
+  top: 1px;
+  background-color: #fff;
+  z-index: 2; */
+
+  /**
+    Fixed Header - default border 일 때 &:after 까지
+  */
+  /* position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 2;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-bottom: 1px solid #e6e6e6;
+  } */
+
+  /** 
+    Fixed Header / Fixed Index 둘다 적용했을 때
+    겹치는 (0, 0)셀 처리
+  */
+  &:first-child {
+    left: 1px;
+    z-index: 3;
+  }
 `;
 
 const Row = styled.tr`
@@ -101,6 +148,39 @@ const Cell = styled.td`
     nowrap: 문자열에 공백이 있어도 줄바꿈하지 않음. 
   */
   white-space: nowrap;
+
+  /** 
+    Fixed Index- border true 일 때
+  */
+  &:first-child {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 1px;
+    background-color: #fff;
+    outline: 1px solid #e6e6e6;
+    outline-offset: 0;
+    z-index: 1;
+  }
+
+  /** 
+    Fixed Index - border false 일 때
+  */
+  /* &:first-child {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 1px;
+    z-index: 1;
+  } */
+
+  /** 
+    Fixed Index - default border 일 때
+  */
+  /* &:first-child {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 1px;
+    z-index: 1;
+  } */
 `;
 
 const Table = ({
@@ -154,8 +234,6 @@ const Table = ({
         : changeCheckedRowIds(new Set(rowList.keys())),
     [isAllRowsChecked, rowList]
   );
-
-  //TODO: sort - ordering 처리 하는거
 
   return (
     <Container>
