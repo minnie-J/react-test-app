@@ -25,14 +25,16 @@ const TableArea = styled.table`
   /* table-layout: fixed; */
 
   border: ${(props) => (props.border && "1px solid") || "unset"};
-  border-color: #e6e6e6;
+  /* border-color: #e6e6e6; */
+  border-color: #48abbd;
 `;
 
 const HeaderArea = styled.tr`
   height: ${(props) => props.height || "4rem"};
 
   border-bottom: ${(props) => props.border || "1px solid"};
-  border-color: #e6e6e6;
+  /* border-color: #e6e6e6; */
+  border-color: #48abbd;
 
   font-size: 1.1rem;
   font-weight: 700;
@@ -45,8 +47,11 @@ const ColumnCell = styled.th`
   vertical-align: middle;
   padding: 0 6px;
 
+  text-align: center;
+
   border: ${(props) => (props.border && "1px solid") || "unset"};
-  border-color: #e6e6e6;
+  /* border-color: #e6e6e6; */
+  border-color: #48abbd;
 
   width: ${(props) =>
     props.columnWidth ? props.columnWidth : props.ellipsis ? "100%" : "unset"};
@@ -61,10 +66,12 @@ const ColumnCell = styled.th`
   */
   position: -webkit-sticky;
   position: sticky;
-  top: 1px;
+  top: 0;
   background-color: #fff;
-  outline: 1px solid #e6e6e6;
-  outline-offset: 0;
+  /* outline: 1px solid #e6e6e6;
+  outline-offset: 0; */
+  /* box-shadow: 1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6; */
+  box-shadow: 1px 0 0 #48abbd, 0 1px 0 #48abbd;
   z-index: 2;
 
   /** 
@@ -99,7 +106,7 @@ const ColumnCell = styled.th`
     겹치는 (0, 0)셀 처리
   */
   &:first-child {
-    left: 1px;
+    left: 0;
     z-index: 3;
   }
 `;
@@ -108,7 +115,8 @@ const Row = styled.tr`
   height: ${(props) => props.height || "4rem"};
 
   border-bottom: ${(props) => props.border || "1px solid"};
-  border-color: #e6e6e6;
+  /* border-color: #e6e6e6; */
+  border-color: #48abbd;
 
   font-size: 1.1rem;
 
@@ -117,7 +125,8 @@ const Row = styled.tr`
   }
 
   &:hover {
-    background-color: #f6f6f6;
+    /* background-color: #f6f6f6; */
+    background-color: #c1e0e6;
   }
 `;
 
@@ -126,7 +135,8 @@ const Cell = styled.td`
   padding: 0 6px;
 
   border: ${(props) => (props.border && "1px solid") || "unset"};
-  border-color: #e6e6e6;
+  /* border-color: #e6e6e6; */
+  border-color: #48abbd;
 
   text-align: ${(props) => props.align || "left"};
 
@@ -194,6 +204,8 @@ const Table = ({
   onCheckedRows,
   onClickRow,
   onClickOrder,
+  headerStyleOverride,
+  rowStyleOverride,
 }) => {
   const [checkedRowIds, changeCheckedRowIds] = useState(new Set());
 
@@ -243,7 +255,14 @@ const Table = ({
             <thead>
               <HeaderArea height={height} border={border === false && "unset"}>
                 {checkbox && (
-                  <ColumnCell border={border}>
+                  <ColumnCell
+                    border={border}
+                    style={
+                      headerStyleOverride.backgroundColor && {
+                        backgroundColor: headerStyleOverride.backgroundColor,
+                      }
+                    }
+                  >
                     <Checkbox
                       indeterminate={isSomeRowsChecked}
                       onChange={onCheckAllRows}
@@ -258,6 +277,7 @@ const Table = ({
                       columnWidth={width}
                       ellipsis={ellipsis}
                       border={border}
+                      style={headerStyleOverride}
                     >
                       {columnName}
                     </ColumnCell>
@@ -294,6 +314,7 @@ const Table = ({
                         width={width}
                         ellipsis={ellipsis}
                         border={border}
+                        style={rowStyleOverride}
                       >
                         {render ? render(row[propName]) : row[propName]}
                       </Cell>

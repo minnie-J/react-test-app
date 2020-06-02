@@ -15,7 +15,7 @@ const sampleData = [
     id: 2,
     catName: "sub_b",
     name:
-      "title 2 - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "title 2 - aaaaaaaaaaa aaaaaaaaaaaaaaaaaaaa aaaaaaaa aaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb aaaaaaaaaaaaa",
     creUser: "mini",
     creDate: "2020-05-02 00:00:00",
     count: 0,
@@ -50,7 +50,7 @@ const sampleColumns = [
   {
     columnName: "제목",
     propName: "name",
-    // ellipsis: true,
+    ellipsis: true,
     // align: "center",
     // width: "200px",
     // order,
@@ -96,11 +96,38 @@ const Home = () => {
       <Table
         columnData={sampleColumns}
         rowData={sampleData}
-        // height="36px"
+        // height="2rem"
         border={true}
         // header={false}
         checkbox={true}
         // fixedHeader
+        headerStyleOverride={{
+          // ColumnCell(th) style properties
+          textAlign: "right",
+          fontSize: "0.6rem",
+          fontWeight: "900",
+          // color:
+          // padding:
+          // backgroundColor: "orange",
+        }}
+        rowStyleOverride={
+          {
+            // Cell (td) style properties
+            // fontSize: ,
+            // fontWeight: ,
+            // color: ,
+            // padding: ,
+            // backgroundColor: "yellow",
+            // verticla-align: ,
+          }
+        }
+        // headerHeight // default는 height 값
+        // borderColor
+        // rowHoverColor
+
+        // 스타일 수정 참고 사항
+        // rowStyleOverride는 전역 스타일 변경
+        // 컬럼별 스타일 정의는 column props - render로 하는 것을 권장
       />
     </div>
   );
